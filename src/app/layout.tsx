@@ -28,6 +28,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
+        <head>
+          <link rel="shortcut icon" href ="images/favicon.ico"/>
+        </head>
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
@@ -37,7 +40,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <main className="bg-gradient-to-r from-[#1B1919] to-[#090909]">
+              {children}
+            </main>
           </ThemeProvider>
         </body>
       </html>
