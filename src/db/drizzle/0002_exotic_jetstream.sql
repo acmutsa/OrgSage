@@ -1,0 +1,1 @@
+ALTER TABLE "users_to_orgs" DROP COLUMN IF EXISTS "hasAccepted";

@@ -8,6 +8,27 @@
       "when": 1730595563177,
       "tag": "0000_exotic_ultimatum",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1730613687957,
+      "tag": "0001_true_mad_thinker",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1730613891459,
+      "tag": "0002_exotic_jetstream",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1730613906190,
+      "tag": "0003_mean_pyro",
+      "breakpoints": true
     }
   ]
 }
