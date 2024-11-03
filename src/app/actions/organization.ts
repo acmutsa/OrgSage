@@ -13,6 +13,6 @@ export const createOrganizationAction = registeredUserAction
 
 export const deleteOrganizationAction = registeredUserAction
 .schema(z.object({orgID:z.string().min(1).max(255)}))
-.action(async ({ ctx: {userId}, parsedInput:{orgID} }) => {
+.action(async ({parsedInput:{orgID} }) => {
   await deleteOrganization(orgID);
 });

@@ -10,7 +10,7 @@ export const actionClient = createSafeActionClient();
 
 export const authenticatedAction = actionClient.use(
   // TODO: Add registration check here?
-  async ({ next, ctx }) => {
+  async ({ next, }) => {
     const { userId } = await auth();
     if (!userId)
       returnValidationErrors(z.null(), {
