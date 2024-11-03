@@ -1,5 +1,5 @@
 import { db,eq } from "."
-import { users,orgs,usersToOrgs } from "./schema"
+import { users, orgs, usersToOrgs } from "./schema"
 
 export async function getUser(id:string){
   return db.query.users.findFirst({
@@ -20,12 +20,7 @@ export async function createOrganization(
         profileUrl,
       })
       .returning({ orgID: orgs.orgID });
-    await tx.insert(usersToOrgs).values({
-      orgID: res[0].orgID,
-      userID,
-      roles: "owner",
-      hasAccepted: true,
-    });
+    createInvite(orgID, userID, "owner", true);
     return res[0].orgID;
   });
   return orgID;
@@ -35,5 +30,32 @@ export async function deleteOrganization(orgID:string){
   // Ensure that you are able to also delete the models 
   return db.transaction(async (tx) => {
     await tx.delete(orgs).where(eq(orgs.orgID,orgID));
+  });
+}
+
+export async function createInvite(
+    orgID: string,
+    userID: string,
+    roles: "owner" | "member",
+    hasAccepted?: boolean
+) {
+  const id = await db.transaction(async (tx) => {
+    const res = await tx
+      .insert(usersToOrgs)
+      .values({
+        orgID,
+        userID,
+        roles,
+        hasAccepted
+      })
+      .returning({ id: usersToOrgs.id });
+    return res[0].id;
+  });
+  return id;
+}
+
+export async function deleteInvite(id: number){
+  return db.transaction(async (tx) => {
+    await tx.delete(usersToOrgs).where(eq(usersToOrgs.id, id));
   });
 }
