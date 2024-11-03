@@ -41,7 +41,14 @@ export async function deleteOrganization(orgID: string){
 
 export async function getUserInvites(userID: string) {
     return db.query.usersToOrgs.findMany({
-        where: eq(usersToOrgs.userID, userID)
+        where: eq(usersToOrgs.userID, userID),
+        with: {
+            orgs: {
+                columns: {
+                    orgName: true
+                }
+            }
+        }
     });
 }
 
