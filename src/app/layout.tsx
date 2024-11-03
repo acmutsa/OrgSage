@@ -43,7 +43,7 @@ export default function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              <main className="w-screen h-screen bg-gradient-to-r from-[#1B1919] to-[#090909]">
+              <main className="flex w-screen h-screen bg-gradient-to-r from-[#1B1919] to-[#090909]">
                 {children}
                 <ChatSupport />
               </main>
