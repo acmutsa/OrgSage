@@ -78,3 +78,11 @@ export async function deleteInvite(id: number){
     await tx.delete(usersToOrgs).where(eq(usersToOrgs.id, id));
   });
 }
+
+export async function acceptInvite(id: number) {
+    return db.transaction(async (tx) => {
+        await tx.update(usersToOrgs)
+            .set({hasAccepted: true})
+            .where(eq(usersToOrgs.id, id));
+    });
+}
