@@ -7,7 +7,7 @@ export default function Page() {
       <div className="flex items-center space-x-20 gap-28">
         <div className="hidden lg:block mr-8">
           <Image
-            src="/OrgSageLogo.png"
+            src="/OrgSageLogo.svg"
             width={300}
             height={200}
             alt="home page icon"
