@@ -2,7 +2,8 @@ import Link from "next/link";
 
 const links = [
     {name: "Chatbots", dest: "/dash/chatbots"},
-    {name: "Invites",  dest: "/dash/invites"}
+    {name: "Invites",  dest: "/dash/invites"},
+    {name: "Organizations", dest: "/dash/organizations"},
 ];
 
 const PageSelect = () => {
