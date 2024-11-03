@@ -1,0 +1,1 @@
+ALTER TABLE "users_to_orgs" ADD COLUMN "hasAccepted" boolean DEFAULT false NOT NULL;

@@ -5,6 +5,7 @@ import {
  bigserial,
  text,
  varchar,
+ boolean
 } from "drizzle-orm/pg-core"
 import { relations } from "drizzle-orm";
 
@@ -23,9 +24,9 @@ export const userRelations = relations(users,  ({ many }) => ({
 }));
 
 export const orgs = pgTable("orgs", {
-  orgID: uuid().primaryKey(),
-  orgName: varchar({ length: 255 }).notNull(),
-  profileUrl: varchar({ length: 255 }).notNull(),
+  orgID: uuid().defaultRandom().primaryKey(),
+  orgName: varchar({ length: 255 }).notNull().unique(),
+  profileUrl: varchar({ length: 255 }),
 });
 
 export const orgsRelations = relations(orgs,  ({ many }) => ({
@@ -45,11 +46,13 @@ export const modelsRelations = relations(models,  ({ one, many }) => ({
 }));
 
 export const usersToOrgs = pgTable("users_to_orgs", {
-  id: bigserial({mode: "number"}).primaryKey(),
-  orgID: varchar({ length: 255 }).notNull(),
+  id: bigserial({ mode: "number" }).primaryKey(),
+  orgID: varchar({ length: 255 })
+    .notNull()
+    .references(() => orgs.orgID, { onDelete: "cascade" }),
   userID: varchar({ length: 255 }).notNull(),
   roles: rolesEnum().notNull(),
-  hasAccepted: varchar({ length: 255 }).notNull().default("false"),
+  hasAccepted: boolean().notNull().default(false),
 });
 
 export const usersToOrgsRelations = relations(usersToOrgs,  ({ one }) => ({
