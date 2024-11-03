@@ -7,6 +7,12 @@ export async function getUser(id: string){
   })
 }
 
+export async function getOrganization(id: string) {
+    return db.query.orgs.findFirst({
+        where: eq(orgs.orgID, id)
+    });
+}
+
 export async function createOrganization(
   orgName: string,
   profileUrl: string | null | undefined,
@@ -34,7 +40,7 @@ export async function deleteOrganization(orgID: string){
 }
 
 export async function getUserInvites(userID: string) {
-    db.query.usersToOrgs.findMany({
+    return db.query.usersToOrgs.findMany({
         where: eq(usersToOrgs.userID, userID)
     });
 }
