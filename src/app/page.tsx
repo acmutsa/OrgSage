@@ -1,4 +1,4 @@
-import Assistant from "../components/assistant";
+import Assistant from "./dash/chatbots/page";
 import Navbar from "../components/navbar";
 
 

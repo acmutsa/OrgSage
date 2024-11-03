@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { Message, useAssistant } from 'ai/react';
 import { ChatBubbleAvatar } from "@/components/ui/chat/chat-bubble";
-import { ChatInput } from './ui/chat/chat-input';
-import { ChatMessageList } from './ui/chat/chat-message-list';
+import { ChatInput } from '../../../components/ui/chat/chat-input';
+import { ChatMessageList } from '../../../components/ui/chat/chat-message-list';
 import { Send } from "lucide-react";
 
 interface Chat {
@@ -95,4 +95,3 @@ export default function Assistant() {
     </div>
   );
 }
-
