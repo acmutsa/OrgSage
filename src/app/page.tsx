@@ -1,3 +1,4 @@
+import Assistant from "../components/assistant";
 import Navbar from "../components/navbar";
 
 
@@ -10,6 +11,7 @@ export default function Home() {
         <p className="text-lg text-white text-center">
           OrgSage is your single source of truth for organizational knowledge.
         </p>
+        <Assistant/>
       </div>
   </div>
   );
