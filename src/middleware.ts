@@ -15,7 +15,7 @@ const isPublicRoute = createRouteMatcher(["/", "/sign-in(.*)", "/sign-up(.*)"]);
 export default clerkMiddleware(async (auth, req) => {
     console.log("middleware");
     if (isPublicRoute(req)) return;
-    console.log("Got passed this");
+    console.log("Got past this");
     const { userId: userID, redirectToSignIn } = await auth();
     if (!userID) redirectToSignIn();
     console.log('checking for user prescence')

@@ -2,7 +2,7 @@ import { db,eq } from "."
 import { users,orgs,usersToOrgs } from "./schema"
 import { createUserSchema } from "./zod";
 import z from "zod";
-
+import {nanoid} from "nanoid"
 type userProps = z.infer<typeof createUserSchema>
 
 export async function getUser(id:string){
@@ -20,6 +20,7 @@ export async function createOrganization(
     const res = await tx
       .insert(orgs)
       .values({
+        orgID: nanoid(),
         orgName,
         profileUrl,
       })
@@ -44,4 +45,13 @@ export async function deleteOrganization(orgID:string){
 
 export async function createUser(props:userProps){
   return db.insert(users).values(props);
+}
+
+export async function getUserOrgs(userID:string){
+  return db.query.usersToOrgs.findMany({
+    with:{
+      orgs:true
+    },
+    where:eq(usersToOrgs.userID,userID)
+  })
 }
