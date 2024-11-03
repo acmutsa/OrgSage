@@ -5,7 +5,7 @@ import Logo from "./home-logo";
 
 const Navbar = () => {
   return (
-    <div className="border-b border-white bg-zinc-950 flex justify-between py-3 px-4">
+    <div className="border-b border-gray-600 bg-zinc-950 flex justify-between py-2 px-4">
       <div className="flex items-center gap-x-3">
         <Logo/>
         <span className="text-white text-2xl font-semibold">OrgSage</span>
