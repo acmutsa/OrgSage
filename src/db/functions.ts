@@ -1,5 +1,9 @@
 import { db,eq } from "."
 import { users,orgs,usersToOrgs } from "./schema"
+import { createUserSchema } from "./zod";
+import z from "zod";
+
+type userProps = z.infer<typeof createUserSchema>
 
 export async function getUser(id:string){
   return db.query.users.findFirst({
@@ -36,4 +40,8 @@ export async function deleteOrganization(orgID:string){
   return db.transaction(async (tx) => {
     await tx.delete(orgs).where(eq(orgs.orgID,orgID));
   });
+}
+
+export async function createUser(props:userProps){
+  return db.insert(users).values(props);
 }

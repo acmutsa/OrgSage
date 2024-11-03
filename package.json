@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "with-env next start",
+    "with-env": "dotenv -e ../../.env --",
     "lint": "next lint",
     "migrations:generate": "drizzle-kit generate",
     "migrations:apply": "node -r esbuild-register migrate.ts",
