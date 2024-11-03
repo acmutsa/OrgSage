@@ -1,4 +1,4 @@
-import { createInsertSchema } from "drizzle-zod";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { orgs, usersToOrgs } from "./schema";
 
 export const createOrganizationSchema = createInsertSchema(orgs).omit({
@@ -8,3 +8,5 @@ export const createOrganizationSchema = createInsertSchema(orgs).omit({
 export const createInviteSchema = createInsertSchema(usersToOrgs).omit({
   id: true
 });
+
+export const selectInviteSchema = createSelectSchema(usersToOrgs);
