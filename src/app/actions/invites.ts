@@ -12,8 +12,7 @@ export const getUserInvitesAction = registeredUserAction
 export const createInviteAction = registeredUserAction
     .schema(createInviteSchema)
     .action(async ({ parsedInput: { orgID, userID, roles, hasAccepted } }) => {
-        const id = await createInvite(orgID, userID, roles, hasAccepted);
-        return id;
+        return createInvite(orgID, userID, roles, hasAccepted);
     });
 
 export const deleteInviteAction = registeredUserAction
