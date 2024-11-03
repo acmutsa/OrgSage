@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "../components/theme-provider"
-import ChatSupport from "@/components/chat-support";
 import { MyRuntimeProvider } from "./MyRuntimeProvider";
 
 const geistSans = localFont({
@@ -45,7 +44,6 @@ export default function RootLayout({
             >
               <main className="flex flex-col w-screen h-screen bg-gradient-to-r from-[#1B1919] to-[#090909]">
                 {children}
-                <ChatSupport />
               </main>
             </ThemeProvider>
           </body>
