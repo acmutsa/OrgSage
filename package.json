@@ -6,7 +6,6 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
     "migrations:generate": "drizzle-kit generate",
     "migrations:apply": "node -r esbuild-register migrate.ts",
     "migrations:drop": "drizzle-kit drop",
