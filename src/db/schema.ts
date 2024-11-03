@@ -24,7 +24,7 @@ export const userRelations = relations(users,  ({ many }) => ({
 
 export const orgs = pgTable("orgs", {
   orgID: uuid().primaryKey(),
-  orgName: varchar({ length: 255 }).notNull(),
+  orgName: varchar({ length: 255 }).notNull().unique(),
   profileUrl: varchar({ length: 255 }).notNull(),
 });
 
