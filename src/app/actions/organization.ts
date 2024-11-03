@@ -1,11 +1,18 @@
 "use server";
 import { registeredUserAction } from "./safe-action";
 import { createOrganizationSchema } from "@/db/zod";
-export const createOrganization = registeredUserAction
+import { createOrganization,deleteOrganization} from "@/db/functions";
+import z from "zod";
+
+export const createOrganizationAction = registeredUserAction
 .schema(createOrganizationSchema)
-.action(async ({ ctx: {user,userId} }) => {
-  
+.action(async ({ ctx: {userId}, parsedInput:{orgName,profileUrl} }) => {
+  const orgID = await createOrganization(orgName,profileUrl,userId);
+  return orgID;
+});
 
-
-
+export const deleteOrganizationAction = registeredUserAction
+.schema(z.object({orgID:z.string().min(1).max(255)}))
+.action(async ({ ctx: {userId}, parsedInput:{orgID} }) => {
+  await deleteOrganization(orgID);
 });

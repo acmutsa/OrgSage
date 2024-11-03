@@ -6,9 +6,9 @@ import { auth } from "@clerk/nextjs/server";
 import { getUser } from "@/db/functions";
 import { z } from "zod";
 
-export const publicAction = createSafeActionClient();
+export const actionClient = createSafeActionClient();
 
-export const authenticatedAction = publicAction.use(
+export const authenticatedAction = actionClient.use(
   // TODO: Add registration check here?
   async ({ next, ctx }) => {
     const { userId } = await auth();
