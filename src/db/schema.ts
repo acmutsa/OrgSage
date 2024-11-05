@@ -24,7 +24,7 @@ export const userRelations = relations(users,  ({ many }) => ({
 }));
 
 export const orgs = pgTable("orgs", {
-  orgID: uuid().defaultRandom().primaryKey(),
+  orgID: varchar({length:255}).primaryKey(),
   orgName: varchar({ length: 255 }).notNull().unique(),
   profileUrl: varchar({ length: 255 }),
 });
@@ -35,8 +35,8 @@ export const orgsRelations = relations(orgs,  ({ many }) => ({
 }));
 
 export const models = pgTable("models", {
-  modelID: uuid().defaultRandom().primaryKey(),
-  orgID: varchar({ length: 255 }).notNull(),
+  modelID: varchar({length:255}).primaryKey(),
+  orgID: varchar({length:255}).notNull(),
   modelString: varchar({ length: 255 }).notNull(),
 });
 
@@ -47,7 +47,7 @@ export const modelsRelations = relations(models,  ({ one, many }) => ({
 
 export const usersToOrgs = pgTable("users_to_orgs", {
   id: bigserial({ mode: "number" }).primaryKey(),
-  orgID: varchar({ length: 255 })
+  orgID: varchar({length:255})
     .notNull()
     .references(() => orgs.orgID, { onDelete: "cascade" }),
   userID: varchar({ length: 255 }).notNull(),
@@ -67,10 +67,10 @@ export const usersToOrgsRelations = relations(usersToOrgs,  ({ one }) => ({
 }));
 
 export const chats = pgTable("chats", {
-  ChannelSplitterNode: uuid().defaultRandom().primaryKey(),
+  ChannelSplitterNode: varchar({length:255}).primaryKey(),
   content: text(),
   userID: varchar({ length: 255 }).notNull(),
-  orgID: varchar({ length: 255 }).notNull(),
+  orgID: varchar({length:255}).notNull(),
 });
 
 export const chatsRelations = relations(chats,  ({ one }) => ({

@@ -13,11 +13,11 @@ export default function Page() {
             alt="home page icon"
           />
           <div className="text-white text-center text-5xl font-bold mt-4 lg:mt-8">
-            WatchListed
+            OrgSage
           </div>
         </div>
         <div className="flex-shrink-0">
-          <SignUp path="/sign-up" routing="path" signInUrl="/sign-in"/>
+          <SignUp path="/sign-up" routing="path" signInUrl="/sign-in" afterSignUpUrl="/onboarding" forceRedirectUrl="/onboarding"/>
         </div>
       </div>
     </div>
